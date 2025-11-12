@@ -1,92 +1,107 @@
-# BUILD A CHROME EXTENSION FOR PRODUCTIVITY MANAGEMENT
-Develop a Chrome extension that serves as a productivity tracker: it records time spent across websites, blocks distracting domains, and generates daily usage reports. Optionally use a MERN backend to store user settings, produce reports, and sync data across devices.
+## Realtime Chat App
 
+A real-time chat application whose style is heavily inspired by WhatsApp. Built using the MERN Stack (`MongoDB`, `Express.js`, `React`, `Node.js`) with `Firebase` for file storage and `Socket.IO` for instant messaging.
 
-ORGANIZATION: CODETECH IT SOLUTIONS
+> [!WARNING]
+> Messages sent in direct messages and group chats are **_not encrypted_** and are stored as **_plain text_** in the database. **DO NOT share** sensitive information, such as passwords, financial details, or any private data that you use in other applications or accounts. Use this chat app only for the purpose of previewing a demo application.
 
-AUTHOR: Pothina Chandrikarani
+### 🚩 Live Demo
 
-INTERN ID: CT6WVMW
+Current version running at: [https://realtime-chat-app-one-topaz.vercel.app](https://realtime-chat-app-one-topaz.vercel.app)
 
-DOMAIN: MERN Stack
+> [!NOTE]
+> It may take up to 1 minute for the site to be brought up while the loading indicator is displayed, since free instances in Render will spin down with inactivity which can delay requests by 50 seconds or more.
 
-DURATION: 6 weeks
+### ✨ Features
 
-MENTOR: Neela Santosh
+- signing up & signing in
+- setting up your profile info when signing in for the first time
+- updating your profile info
+- adding new friends to chat with by sending them friend requests
+- approving or rejecting the received friend requests
+- creating group messages
+- real-time chatting with your friends in direct messages and groups
+- sending images and other files in chats
+- filtering your chats for displaying `all chats`, `DMs` or `groups`
+- searching for a specific chat in direct messages and groups or a request in friend requests
+- viewing the `contact information`, `groups in common` and `files shared between you` in your friends' profile
+- viewing the `creation date`, `members` and `files shared` of the groups you are in
 
-Overview:
-The Productivity Tracker Chrome Extension is a lightweight browser tool designed to help users monitor and manage their web activity. Built using HTML, CSS, JavaScript, and Chrome Extension APIs, this extension allows users to track the amount of time spent on different websites, block distracting domains, and view daily productivity reports — all locally without needing an internet connection or backend database.
+### ⚙ Setup
 
-Key Features:
-Time Tracking:
-Automatically monitors time spent on websites.
+- ### create a `.env` file in the `server` folder
 
-Tracks which site is currently active and logs how long the user stays on it.
+```
+PORT=3001
+JWT_KEY="YOUR_JWT_KEY"
+ORIGIN="http://localhost:3000"
+DATABASE_URL="YOUR_DATABASE_URL"
+PEPPER_STRING="YOUR_PEPPER_STRING"
+```
 
-Uses the background script and Chrome tabs API for accurate time logging.
+- ### create a `.env` file in the `client` folder
 
-Website Blocking:
-Users can define a list of distracting sites.
+```
+VITE_FIREBASE_API_KEY="YOUR_API_KEY"
+VITE_FIREBASE_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"
+VITE_FIREBASE_PROJECT_ID="YOUR_PROJECT_ID"
+VITE_FIREBASE_STORAGE_BUCKET="YOUR_STORAGE_BUCKET"
+VITE_FIREBASE_MESSAGING_SENDER_ID="YOUR_MESSAGING_SENDER_ID"
+VITE_FIREBASE_APP_ID="YOUR_APP_ID"
+VITE_SERVER_URL="http://localhost:3001"
+```
 
-The extension blocks or redirects the user when they attempt to access those sites.
+### 🏃‍♂️ Running in local development mode
 
-Helps improve focus and prevent procrastination.
+- `server`
 
-Daily Productivity Reports:
-A popup dashboard shows a breakdown of time spent on each website.
+```bash
+cd server
+npm install
+npm run dev
+```
 
-Data is visualized in a clean interface for quick analysis.
+- `client`
 
-Reports reset daily, encouraging consistent productivity.
+```bash
+cd client
+npm install
+npm run dev
+```
 
-Offline Support:
-Works entirely in the browser with no external server or database.
+open http://localhost:3000 with your browser to see the result.
 
-Stores data using localStorage for privacy and simplicity.
+### 📷 Screenshots
 
-Tech Stack:
-Frontend (Chrome Extension):
-HTML/CSS: For building the popup interface and styling.
+`SIGNING UP & SIGNING IN:`
+![signup](https://github.com/user-attachments/assets/9f656b5b-bdd6-42be-9293-e44f52ca0359)
+![signin](https://github.com/user-attachments/assets/7f9e478c-c802-437d-acae-10794bf12392)
 
-JavaScript: Handles time tracking, blocking logic, and data processing.
+`SETTING UP YOUR PROFILE:`
+![profile-landing](https://github.com/user-attachments/assets/25656c2d-9dcf-4f11-a242-b8e90745a84f)
 
-Chrome Extension APIs: Enables interaction with browser tabs, tracking activity, and managing local data storage.
+`SENDING & VIEWING FRIEND REQUESTS:`
+![send-friend-request](https://github.com/user-attachments/assets/3e5d6bd1-5110-4452-8c73-4d159661719d)
+![friend-requests](https://github.com/user-attachments/assets/a81c0290-ff62-4f01-9792-de9be3ff30af)
 
-How It Works:
-Tracking Usage:
-The background script detects when a tab is active or switched.
+`DIRECT MESSAGING:`
+![start-new-chat](https://github.com/user-attachments/assets/95dada0c-b57f-438f-87ec-b7c219b18880)
+![chats](https://github.com/user-attachments/assets/5ca65d19-c537-419e-984d-533a7d939aaf)
 
-It records the time a domain is visited and updates the stored data accordingly.
+`GROUP MESSAGING:`
+![create-group](https://github.com/user-attachments/assets/cae7f705-9665-4c32-973b-c3fd89d75c60)
+![group-chat](https://github.com/user-attachments/assets/8c070f09-e482-47de-8b48-d059f453b6b6)
 
-Blocking Distractions:
-A predefined list of blocked sites is compared with the current tab’s URL.
+`SEARCH FUNCTIONALITY:`
+![search-chats](https://github.com/user-attachments/assets/a01e754f-8a12-4b95-abcb-d4060a8a9a0d)
 
-If a match is found, the site is either closed or redirected to a custom warning page.
+`UPDATING YOUR PROFILE:`
+![profile-update](https://github.com/user-attachments/assets/858fc66f-5e2d-4ae6-b2a8-ea5b00315501)
 
-Displaying Reports:
-The popup (popup.html) fetches time-tracking data from localStorage.
-
-It displays a summary of top visited sites and time spent.
-
-Potential Enhancements:
-Sync Across Devices: Use Chrome Sync API to maintain consistency between multiple browsers.
-
-Custom Timers: Let users set work/break intervals using a Pomodoro-style timer.
-
-Notifications: Alert users when they’ve spent too much time on a specific site.
-
-Graphical Analytics: Add charts for visual time breakdowns using Chart.js or similar.
-
-Conclusion:
-The Productivity Tracker Chrome Extension is a privacy-friendly, easy-to-use tool that boosts online focus by tracking and managing time spent on websites. With features like site blocking and local reporting, it's ideal for students, professionals, or anyone looking to improve their digital discipline.
-
-OUTPUT:
-
-![Image](https://github.com/user-attachments/assets/2eaf01fa-e778-4866-8576-b30911c1e070)
-
-![Image](https://github.com/user-attachments/assets/db557fe1-674c-4626-9a89-4b8f40557c96)
-
-![Image](https://github.com/user-attachments/assets/5e4927c4-bdd3-4ba9-8b5f-a68587c7e9fe)
+`VIEWING FRIEND & GROUP PROFILE:`
+![friend-info](https://github.com/user-attachments/assets/c577cda1-1f15-4c74-a367-73661c56a5bc)
+![group-info](https://github.com/user-attachments/assets/bcb770e9-aea9-4b42-bcfd-02ae935d19fd)
 
 ![Image](https://raw.githubusercontent.com/Aswith-Dev/Real-time-chat-application/main/img1.png)
 
+````
