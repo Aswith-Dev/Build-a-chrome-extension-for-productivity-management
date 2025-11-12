@@ -88,3 +88,5 @@ OUTPUT:
 
 ![Image](https://github.com/user-attachments/assets/5e4927c4-bdd3-4ba9-8b5f-a68587c7e9fe)
 
+![Image](https://github.com/Aswith-Dev/Real-time-chat-application/blob/main/img1.png?raw=true)
+
