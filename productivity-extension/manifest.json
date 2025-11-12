@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Productivity Tracker",
+    "description": "Track time on websites, block distractions, and view daily reports.",
+    "version": "1.0",
+    "permissions": ["storage", "tabs", "scripting"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
